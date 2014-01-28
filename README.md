@@ -12,8 +12,8 @@ You need the folowing libraries:
 
 Run:
 
-# cmake .
+    # cmake .
 
 in the directory and then
 
-# make
+    # make
