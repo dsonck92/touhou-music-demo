@@ -10,7 +10,15 @@ You need the folowing libraries:
 * libsfml-2.1
 * sndfile
 
-Run:
+Clone the repository
+
+    # git clone 'https://github.com/dsonck92/touhou-music-demo.git'
+    
+Init the repository
+
+    # ./init-repository.sh
+
+Run CMake:
 
     # cmake .
 
