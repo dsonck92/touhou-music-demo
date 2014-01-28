@@ -51,7 +51,7 @@ bool LoopMusic::onGetData(Chunk &data)
     return true;
 }
 
-void LoopMusic::onSeek(sf::Time timeOffset)
+void LoopMusic::onSeek(sf::Time )
 {
 
 }

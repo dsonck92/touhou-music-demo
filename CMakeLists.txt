@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 2.6)
+
 project(touhou-music-demo)
 
 set(CMAKE_CXX_FLAGS "-std=c++11 -Wall -Wextra -W -pedantic -pthread" CACHE STRING "" FORCE)
@@ -16,19 +17,25 @@ include_directories("${PROJECT_BINARY_DIR}")
 
 # Define sources and executable
 set(EXECUTABLE_NAME "touhou-music-demo")
-add_executable(${EXECUTABLE_NAME} main.cpp)
+set(SRC_DIR "src")
+set(INC_DIR "include")
+file(GLOB_RECURSE SRC_LIST "${INC_DIR}/*" "${SRC_DIR}/*")
 
+include_directories(${INC_DIR})
+
+add_executable(${PROJECT_NAME} ${SRC_LIST})
 
 # Detect and add SFML
-set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/;${CMAKE_MODULE_PATH}")
+set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/modules/;${CMAKE_MODULE_PATH}")
 set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${CMAKE_SOURCE_DIR}/extlibs/SSVUtils/cmake/modules/")
 
 find_package(SFML 2.1 REQUIRED system window graphics network audio)
+find_package(Sndfile REQUIRED)
 find_package(SSVUtils REQUIRED)
 
 include_directories(${SSVUTILS_INCLUDE_DIR})
 
-target_link_libraries(${EXECUTABLE_NAME} ${SFML_LIBRARIES} sndfile)
+target_link_libraries(${EXECUTABLE_NAME} ${SFML_LIBRARIES} ${SNDFILE_LIBRARIES})
 
 
 # Install target
